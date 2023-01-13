@@ -1,4 +1,7 @@
-const DUMMY_EVENTS = [
+import DateFilter from "./Models/DateFilter";
+import Event from "./Models/Event";
+
+const DUMMY_EVENTS:Event[] = [
   {
     id: 'e1',
     title: 'Programming for everyone',
@@ -39,7 +42,7 @@ export function getAllEvents() {
   return DUMMY_EVENTS;
 }
 
-export function getFilteredEvents(dateFilter) {
+export function getFilteredEvents(dateFilter: DateFilter) {
   const { year, month } = dateFilter;
 
   let filteredEvents = DUMMY_EVENTS.filter((event) => {
@@ -52,6 +55,6 @@ export function getFilteredEvents(dateFilter) {
   return filteredEvents;
 }
 
-export function getEventById(id) {
+export function getEventById(id: string) {
   return DUMMY_EVENTS.find((event) => event.id === id);
 }
