@@ -15,24 +15,32 @@ const EventDetail = (props: {event: Event}) => {
     const formattedAddress = location.replace(', ', '\n');
 
     return <>
-            <h1 className="block text-5xl font-extrabold uppercase text-black text-center mt-10">{title}</h1>
-            <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden mt-10" >
+            <h1 className="block text-5xl font-extrabold uppercase text-black text-center mt-2">{title}</h1>
+            <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden mt-2 mb-2" >
                 <div>
                     <Image src={`/${image}`} alt = {title} className="h-256 w-256 object-cover" width={500} height={500}></Image>
                 </div>
-                <div className="p-8" >
-                    <div>
-                        <div className="h-6 w-6" >
-                            <DateIcon />
+                <div className="p-2" >
+                    <div className="grid grid-cols-4 auto-rows-min">
+                        <div className="grid grid-row flex justify-end">
+                            <div className="h-6 w-6 mr-2">
+                                <DateIcon />
+                            </div>
+                        </div>
+                        <div className="col-span-3">
+                            <time>{humanReadableDate}</time>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-4 auto-rows-min">
+                        <div className="grid grid-row flex justify-end">
+                            <div className="h-6 w-6 mr-2">
+                                <AddressIcon />
+                            </div>
+                        </div>
+                        <div className="col-span-3">
+                            <address>{formattedAddress}</address>
                         </div>
                         
-                        <time>{humanReadableDate}</time>            
-                    </div>
-                    <div>
-                        <div className="h-6 w-6" >
-                            <AddressIcon />
-                        </div>
-                        <address>{formattedAddress}</address>
                     </div>
                 </div>
             </div>
