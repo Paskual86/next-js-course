@@ -1,6 +1,11 @@
+//import path from 'path'; // belong to Node 
+//import fs from 'fs/promises';
+import dataFile from '../data/dummy-backend.json';
+
+
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
-
+import { GetStaticProps } from "next";
 type Products = {
   id: string, //number
   title: string
@@ -25,11 +30,16 @@ export default function Home(props: {products: Products[]}) {
   )
 }
 
+export const getStaticProps: GetStaticProps = async () => {
+  //const filePath = path.join(process.cwd(), 'data', 'dummy-backend.json');
+  //const jsonData = await fs.readFile(filePath);
+  //const data = JSON.parse(jsonData);
+  const data = dataFile;
 
-export async function getStaticProps(): Promise<{props: {products:Products[]}}>{
   return {
     props: {
-      products: [{ id:'p1', title:'Product 1'}],
-    }
+      products: data.products,
+    },
+    revalidate: 10
   }
 }
