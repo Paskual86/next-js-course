@@ -19,6 +19,13 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     const { params } = context;
     const productId = params!.pid;    
     const product = data.products.find(product => product.id === productId);
+    // Not found page in the case that the id not exists
+    if (!product) {
+      return {
+        notFound:true
+      }
+    }
+
     return {
       props: {
         product,
