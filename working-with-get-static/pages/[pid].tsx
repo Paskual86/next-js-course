@@ -27,12 +27,14 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
   }
 
   export async function getStaticPaths() {
+    const data = dataFile;
+    const productIds = data.products.map(product => product.id);
+    const pathsWithParams = productIds.map(id => ({params: {pid:id}}));
+
     return {
       paths: [
         {
-          params: {
-            pid: 'p1'
-          },
+          params: pathsWithParams,
         }
       ],
       fallback: true
