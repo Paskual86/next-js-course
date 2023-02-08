@@ -6,11 +6,8 @@ import dataFile from '../data/dummy-backend.json';
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import { GetStaticProps } from "next";
-type Products = {
-  id: string, //number
-  title: string
-}
-
+import { Products } from '@/Models/Products';
+import Link from 'next/link';
 export default function Home(props: {products: Products[]}) {
   const {products} = props
   return (
@@ -23,7 +20,8 @@ export default function Home(props: {products: Products[]}) {
       </Head>
       <main className={styles.main}>
         <ul>
-          {products.map(mp => (<li key={mp.id}>{mp.title}</li>))}
+          {products.map(mp => (<li key={mp.id}>
+            <Link href={`/${mp.id}`}>{mp.title}</Link></li>))}
         </ul>
       </main>
     </>
@@ -40,6 +38,10 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       products: data.products,
     },
-    revalidate: 10
+    revalidate: 10,
+    //notFound: true,
+    /*redirect: {
+      destination:'/no-data'
+    }*/
   }
 }
