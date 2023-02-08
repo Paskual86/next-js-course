@@ -3,6 +3,10 @@ import { GetStaticProps, GetStaticPropsContext } from 'next';
 import dataFile from '../data/dummy-backend.json';
 
 const ProductDetail = (props: {product: Products } ) => {
+    
+    if (!props.product) {
+      return <p>Loading</p>
+    }
     return(<>
         <h1>{props.product.title}</h1>
         <p>{props.product.description}</p>
@@ -29,19 +33,9 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
           params: {
             pid: 'p1'
           },
-        },
-        {
-          params: {
-            pid: 'p2'
-          }
-        },
-        {
-          params: {
-            pid: 'p3'
-          }
         }
       ],
-      fallback: false
+      fallback: true
     }
   }
 
