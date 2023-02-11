@@ -1,6 +1,6 @@
 import { Products } from '@/Models/Products';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
-import dataFile from '../data/dummy-backend.json';
+import dataFile from '../../data/dummy-backend.json';
 
 const ProductDetail = (props: {product: Products } ) => {
     
