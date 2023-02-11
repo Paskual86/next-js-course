@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import {EventDetail as EventDetailComponent} from "../../components/events/EventDetail";
-import { getEventById } from "../../dummy-data";
+import { getEventById } from "../../api/eventEndpoints";
 
 const EventDetail = () => {
     const router = useRouter();

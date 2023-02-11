@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import EventSearch from "../../components/events/event-search";
 import EventList from "../../components/events/EventList";
-import { getAllEvents } from "../../dummy-data";
+import { getAllEvents } from "../../api/eventEndpoints";
 
 const HomeEvent = () => {
     const router = useRouter();
@@ -14,7 +14,7 @@ const HomeEvent = () => {
 
     return <>
         <EventSearch onFilterEvent={filteredEventSearchHandler}></EventSearch>
-        <EventList items={events} ></EventList>
+        <EventList items={events!} ></EventList>
     </>
 }
 

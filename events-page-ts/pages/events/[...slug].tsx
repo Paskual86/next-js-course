@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import EventList from "../../components/events/EventList";
 import ErrorAlert from "../../components/UI/error-alert";
 import ResultsTitle from "../../components/UI/results-title";
-import { getFilteredEvents } from "../../dummy-data";
+import { getFilteredEvents } from "../../api/eventEndpoints";
 
 const EventsFiltered = () => {
     const router = useRouter();
