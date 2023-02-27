@@ -23,7 +23,7 @@ async function _getAllEvents():Promise<Event[]> {
         location: obj[key].location
       })
     }
-    return result.filter((event) => event.isFeatured);
+    return result;
   }else{
     return [];
   }
@@ -59,5 +59,5 @@ export async function getFeaturedEvents() {
   
   export async function getEventById(id: string) {
     const eventsData = WORK_WITH_DUMMY_DATA ? DUMMY_EVENTS : await _getAllEvents();
-        return eventsData.find((event) => event.id === id);
+    return eventsData.find((event) => event.id === id);
   }
